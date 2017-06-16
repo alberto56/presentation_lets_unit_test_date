@@ -13,9 +13,7 @@ class DateManipulatorTest extends TestCase {
    * @dataProvider providerStartEndDates
    */
   public function testStartEndDates($value, $dates, $expected) {
-    $object = new DateManipulator();
-
-    $output = $object->startEndDates($value, $dates);
+    $output = DateManipulator::instance()->startEndDates($value, $dates);
     $this->assertTrue($output == $expected);
   }
 
@@ -57,6 +55,7 @@ class DateManipulatorTest extends TestCase {
    */
   public function testCalcRepeatRule($message, $ids, $module_exists, $repeating_ids, $rule, $expected) {
     $object = $this->getMockBuilder(DateManipulator::class)
+      ->disableOriginalConstructor()
       ->setMethods([
         'entityExtractIds',
         'moduleExists',
@@ -115,10 +114,9 @@ class DateManipulatorTest extends TestCase {
    * @cover ::calcRepeatRule
    */
   public function testCalcRepeatRuleException() {
-    $object = new DateManipulator();
     $this->expectException(Exception::class);
     $repeating_ids = 'whatever';
-    $object->calcRepeatRule('', 'whatever', $repeating_ids, 'whatever', 'whatever', 'whatever');
+    DateManipulator::instance()->calcRepeatRule('', 'whatever', $repeating_ids, 'whatever', 'whatever', 'whatever');
   }
 
   /**
@@ -127,6 +125,7 @@ class DateManipulatorTest extends TestCase {
    */
   public function testCalcRepeatRuleCallModuleExists($ids, $repeating_ids, $call_module_exists) {
     $object = $this->getMockBuilder(DateManipulator::class)
+      ->disableOriginalConstructor()
       ->setMethods([
         'entityExtractIds',
         'moduleExists',
