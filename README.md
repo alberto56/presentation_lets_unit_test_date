@@ -12,3 +12,4 @@ Other tags
  * `ci`: Added code to run tests on CircleCI.
  * `provider`: Added a data provider.
  * `provider-multiple`: Added more data to data providers.
+ * `non-pure`: Refactored a non-pure function.

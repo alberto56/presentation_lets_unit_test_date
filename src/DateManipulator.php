@@ -34,4 +34,24 @@ class DateManipulator {
     return $return;
   }
 
+  /**
+   * Calculate the repeat rule.
+   *
+   * Check the formatter settings to see if the repeat rule should be
+   * displayed. Show it only with the first multiple value date.
+   */
+  public function calcRepeatRule($entity_type, $entity, &$repeating_ids, $item, $show_repeat_rule, $field) {
+    list($id) = entity_extract_ids($entity_type, $entity);
+    if (!in_array($id, $repeating_ids) && module_exists('date_repeat_field') && !empty($item['rrule']) && $options['show_repeat_rule'] == 'show') {
+      $repeat_vars = array(
+        'field' => $field,
+        'item' => $item,
+        'entity_type' => $entity_type,
+        'entity' => $entity,
+      );
+      $output .= theme('date_repeat_display', $repeat_vars);
+      $repeating_ids[] = $id;
+    }
+  }
+
 }
