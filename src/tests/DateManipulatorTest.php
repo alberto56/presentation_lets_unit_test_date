@@ -29,6 +29,25 @@ class DateManipulatorTest extends TestCase {
           'date2' => 'whatever',
         ],
       ],
+      [
+        'value' => 'value2',
+        'dates' => ['value2' => ['formatted' => 'whatever']],
+        'expected' => [
+          'date1' => 'whatever',
+          'date2' => 'whatever',
+        ],
+      ],
+      [
+        'value' => 'some-random-value',
+        'dates' => [
+          'value' => ['formatted' => 'first'],
+          'value2' => ['formatted' => 'second'],
+        ],
+        'expected' => [
+          'date1' => 'first',
+          'date2' => 'second',
+        ],
+      ],
     ];
   }
 

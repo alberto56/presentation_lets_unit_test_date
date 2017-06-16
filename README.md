@@ -11,3 +11,4 @@ Other tags
  * `initial-test`: We refactored a part of a large function to make it testable. To run it, install Docker and run `./src/test.sh`
  * `ci`: Added code to run tests on CircleCI.
  * `provider`: Added a data provider.
+ * `provider-multiple`: Added more data to data providers.
