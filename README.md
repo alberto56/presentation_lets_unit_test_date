@@ -18,3 +18,4 @@ Other tags
  * `expectations`: Testing expectations.
  * `singleton`: Use the singleton design pattern instead of static methods.
  * `traits`: Use traits.
+ * `autoloader`: Use an autoloader.
