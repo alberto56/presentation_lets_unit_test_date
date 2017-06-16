@@ -5,29 +5,8 @@
  */
 class DateManipulator {
 
-  /**
-   * Internal instance variable used with the instance() method.
-   */
-  static private $instance;
-
-  /**
-   * Implements the Singleton design pattern.
-   *
-   * Only one instance of this class should exist per execution.
-   *
-   * @return DateManipulator
-   *   The single instance of this class.
-   */
-  static function instance() {
-    if (!self::$instance) {
-      self::$instance = new self();
-    }
-    return self::$instance;
-  }
-
-  protected function __construct() {
-    
-  }
+  use DateEnvironmentTrait;
+  use DateSingletonTrait;
 
   /**
    * Given an end-date option, provide date1 and date2 from variables.
@@ -79,18 +58,6 @@ class DateManipulator {
       $repeating_ids[] = $id;
       return $this->theme('date_repeat_display', $repeat_vars);
     }
-  }
-
-  protected function entityExtractIds($entity_type, $entity) {
-    return entity_extract_ids($entity_type, $entity);
-  }
-
-  protected function moduleExists($module) {
-    return module_exists($module);
-  }
-
-  protected function theme($hook, $variables) {
-    return theme($hook, $variables);
   }
 
 }

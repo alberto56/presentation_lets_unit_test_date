@@ -1,6 +1,8 @@
 <?php
 
 use \PHPUnit\Framework\TestCase;
+require_once('DateSingletonTrait.php');
+require_once('DateEnvironmentTrait.php');
 require_once('DateManipulator.php');
 
 /**
