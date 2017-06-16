@@ -16,3 +16,4 @@ Other tags
  * `mock-stub`: Use mocking and stubbing of external function calls.
  * `exception`: Testing exceptions.
  * `expectations`: Testing expectations.
+ * `singleton`: Use the singleton design pattern instead of static methods.
