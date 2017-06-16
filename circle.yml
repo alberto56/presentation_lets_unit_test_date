@@ -1,0 +1,10 @@
+# This file tells the Circle CI continuous integration server how to run tests
+# for this project.
+
+machine:
+  services:
+    - docker
+
+test:
+  override:
+    - ./src/test.sh
