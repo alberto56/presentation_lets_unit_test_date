@@ -14,3 +14,4 @@ Other tags
  * `provider-multiple`: Added more data to data providers.
  * `non-pure`: Refactored a non-pure function.
  * `mock-stub`: Use mocking and stubbing of external function calls.
+ * `exception`: Testing exceptions.

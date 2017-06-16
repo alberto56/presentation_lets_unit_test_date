@@ -111,4 +111,14 @@ class DateManipulatorTest extends TestCase {
     ];
   }
 
+  /**
+   * @cover ::calcRepeatRule
+   */
+  public function testCalcRepeatRuleException() {
+    $object = new DateManipulator();
+    $this->expectException(Exception::class);
+    $repeating_ids = 'whatever';
+    $object->calcRepeatRule('', 'whatever', $repeating_ids, 'whatever', 'whatever', 'whatever');
+  }
+
 }
