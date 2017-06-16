@@ -10,18 +10,26 @@ class DateManipulatorTest extends TestCase {
 
   /**
    * @cover ::startEndDates
+   * @dataProvider providerStartEndDates
    */
-  public function testStartEndDates() {
+  public function testStartEndDates($value, $dates, $expected) {
     $object = new DateManipulator();
 
-    $value = 'value';
-    $dates['value']['formatted'] = 'whatever';
-    $expected = array(
-      'date1' => 'whatever',
-      'date2' => 'whatever',
-    );
     $output = $object->startEndDates($value, $dates);
     $this->assertTrue($output == $expected);
+  }
+
+  public function providerStartEndDates() {
+    return [
+      [
+        'value' => 'value',
+        'dates' => ['value' => ['formatted' => 'whatever']],
+        'expected' => [
+          'date1' => 'whatever',
+          'date2' => 'whatever',
+        ],
+      ],
+    ];
   }
 
 }
