@@ -92,7 +92,7 @@ function theme_date_display_combination($variables) {
   }
 
   $manipulator = new DateManipulator();
-  $manipulator->calcRepeatRule($entity_type, $entity, $repeating_ids, $item, $options['show_repeat_rule'], $field);
+  $output .= $manipulator->calcRepeatRule($entity_type, $entity, $repeating_ids, $item, $options['show_repeat_rule'], $field);
 
   // If this is a full node or a pseudo node created by grouping multiple
   // values, see exactly which values are supposed to be visible.

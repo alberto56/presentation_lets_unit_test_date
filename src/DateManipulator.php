@@ -41,17 +41,29 @@ class DateManipulator {
    * displayed. Show it only with the first multiple value date.
    */
   public function calcRepeatRule($entity_type, $entity, &$repeating_ids, $item, $show_repeat_rule, $field) {
-    list($id) = entity_extract_ids($entity_type, $entity);
-    if (!in_array($id, $repeating_ids) && module_exists('date_repeat_field') && !empty($item['rrule']) && $options['show_repeat_rule'] == 'show') {
+    list($id) = $this->entityExtractIds($entity_type, $entity);
+    if (!in_array($id, $repeating_ids) && $this->moduleExists('date_repeat_field') && !empty($item['rrule']) && $show_repeat_rule == 'show') {
       $repeat_vars = array(
         'field' => $field,
         'item' => $item,
         'entity_type' => $entity_type,
         'entity' => $entity,
       );
-      $output .= theme('date_repeat_display', $repeat_vars);
       $repeating_ids[] = $id;
+      return $this->theme('date_repeat_display', $repeat_vars);
     }
+  }
+
+  protected function entityExtractIds($entity_type, $entity) {
+    return entity_extract_ids($entity_type, $entity);
+  }
+
+  protected function moduleExists($module) {
+    return module_exists($module);
+  }
+
+  protected function theme($hook, $variables) {
+    return theme($hook, $variables);
   }
 
 }
