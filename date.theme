@@ -117,22 +117,10 @@ function theme_date_display_combination($variables) {
     $element['#entity'] = $entity;
   }
 
-  switch ($options['fromto']) {
-    case 'value':
-      $date1 = $dates['value']['formatted'];
-      $date2 = $date1;
-      break;
-
-    case 'value2':
-      $date2 = $dates['value2']['formatted'];
-      $date1 = $date2;
-      break;
-
-    default:
-      $date1 = $dates['value']['formatted'];
-      $date2 = $dates['value2']['formatted'];
-      break;
-  }
+  $manipulator = new DateManipulator();
+  $result = $manipulator->startEndDates($options['fromto']);
+  $date1 = $result['date1'];
+  $date2 = $result['date2'];
 
   // Pull the timezone, if any, out of the formatted result and tack it back on
   // at the end, if it is in the current formatted date.
