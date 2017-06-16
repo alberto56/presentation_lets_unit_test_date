@@ -17,3 +17,4 @@ Other tags
  * `exception`: Testing exceptions.
  * `expectations`: Testing expectations.
  * `singleton`: Use the singleton design pattern instead of static methods.
+ * `traits`: Use traits.
