@@ -121,4 +121,39 @@ class DateManipulatorTest extends TestCase {
     $object->calcRepeatRule('', 'whatever', $repeating_ids, 'whatever', 'whatever', 'whatever');
   }
 
+  /**
+   * @cover ::calcRepeatRule
+   * @dataProvider providerCalcRepeatRuleCallModuleExists
+   */
+  public function testCalcRepeatRuleCallModuleExists($ids, $repeating_ids, $call_module_exists) {
+    $object = $this->getMockBuilder(DateManipulator::class)
+      ->setMethods([
+        'entityExtractIds',
+        'moduleExists',
+      ])
+      ->getMock();
+    $object->method('entityExtractIds')
+      ->willReturn($ids);
+
+    $object->expects($call_module_exists ? $this->once() : $this->never())
+       ->method('moduleExists');
+
+    $output = $object->calcRepeatRule('entity_type', 'whatever', $repeating_ids, 'whatever', 'whatever', 'field');
+  }
+
+  public function providerCalcRepeatRuleCallModuleExists() {
+    return [
+      [
+        'ids' => [1],
+        'repeating_ids' => [1],
+        'call_module_exists' => FALSE,
+      ],
+      [
+        'ids' => [1],
+        'repeating_ids' => [2],
+        'call_module_exists' => TRUE,
+      ]
+    ];
+  }
+
 }

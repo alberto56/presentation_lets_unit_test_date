@@ -15,3 +15,4 @@ Other tags
  * `non-pure`: Refactored a non-pure function.
  * `mock-stub`: Use mocking and stubbing of external function calls.
  * `exception`: Testing exceptions.
+ * `expectations`: Testing expectations.
